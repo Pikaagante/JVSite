@@ -1,0 +1,117 @@
+<?php
+require_once('Config/Config.php');
+require_once('BDD/Database.php');
+
+class Modif {
+    private $database;
+
+    public function __construct(Database $database) {
+        $this->database = $database;
+    }
+
+    public function updateName($old_name, $new_name) {
+        try {
+            // Vérifier si le jeu existe
+            $sql = "SELECT * FROM jv WHERE nom_jeu = :old_name";
+            $stmt = $this->database->getConnection()->prepare($sql);
+            $stmt->bindParam(':old_name', $old_name, PDO::PARAM_STR);
+            $stmt->execute();
+            $jeu = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($jeu) {
+                // Mettre à jour le nom du jeu
+                $sql = "UPDATE jv SET nom_jeu = :new_name WHERE nom_jeu = :old_name";
+                $stmt = $this->database->getConnection()->prepare($sql);
+
+                $stmt->bindParam(':old_name', $old_name, PDO::PARAM_STR);
+                $stmt->bindParam(':new_name', $new_name, PDO::PARAM_STR);
+
+                $stmt->execute();
+
+                $updatedRows = $stmt->rowCount();
+                if ($updatedRows > 0) {
+                    header('Location: ../Html/accueil.php');
+                } else {
+                    echo "La modification du nom a échoué.";
+                }
+            } else {
+                echo "Le jeu avec le nom $old_name n'existe pas.";
+            }
+        } catch (PDOException $e) {
+            echo "Erreur de mise à jour : " . $e->getMessage();
+        }
+    }
+
+    public function updateFini($name_jeu_fini, $fini) {
+        try {
+            $sql = "UPDATE jv SET fini = :fini WHERE nom_jeu = :name";
+            $stmt = $this->database->getConnection()->prepare($sql);
+
+            $stmt->bindParam(':name', $name_jeu_fini, PDO::PARAM_STR);
+            $stmt->bindParam(':fini', $fini, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            $updatedRows = $stmt->rowCount();
+            if ($updatedRows > 0) {
+                header('Location: ../Html/accueil.php');
+            } else {
+                echo "La modification a échoué.";
+            }
+        } catch (PDOException $e) {
+            echo "Erreur d'insertion : " . $e->getMessage();
+        }
+    }
+
+    public function updateFiniSucces($name_jeu_success, $fini_success) {
+        try {
+            $sql = "UPDATE jv SET fini_success = :fini_success WHERE nom_jeu = :nom_jeu";
+            $stmt = $this->database->getConnection()->prepare($sql);
+
+            $stmt->bindParam(':nom_jeu', $name_jeu_success, PDO::PARAM_STR);
+            $stmt->bindParam(':fini_success', $fini_success, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            $updatedRows = $stmt->rowCount();
+            if ($updatedRows > 0) {
+                header('Location: ../Html/accueil.php');
+            } else {
+                echo "La modification a échoué.";
+            }
+        } catch (PDOException $e) {
+            echo "Erreur d'insertion : " . $e->getMessage();
+        }
+    }
+
+    public function updateImage($name_jeu_image, $image) {
+        
+    }
+}
+
+$config = new Config();
+$database = new Database($config->getServername(), $config->getUsername(), $config->getPassword(), $config->getDBName());
+$modif = new Modif($database);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['action'])) {
+        if ($_POST['action'] === 'updateName' && isset($_POST['nom_jeu']) && isset($_POST['nouveau_nom_jeu'])) {
+            $old_name = $_POST['nom_jeu'];
+            $new_name = $_POST['nouveau_nom_jeu'];
+
+            $modif->updateName($old_name, $new_name);
+
+        } elseif ($_POST['action'] === 'updateFini' && isset($_POST['name_jeu_fini'])) {
+            $name_jeu_fini = $_POST['name_jeu_fini'];
+            $fini = isset($_POST['fini']) ? 1 : 0; 
+
+            $modif->updateFini($name_jeu_fini, $fini);
+        } elseif ($_POST['action'] === 'updateFiniSucces' && isset($_POST['name_jeu_success'])) {
+            $name_jeu_success = $_POST['name_jeu_success'];
+            $fini_success = isset($_POST['fini_success']) ? 1 : 0;
+
+            $modif->updateFiniSucces($name_jeu_success, $fini_success);
+        }
+    }
+}
+?>
