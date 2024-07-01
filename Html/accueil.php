@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajout de Jeu Vidéo</title>
+    <link rel="stylesheet" href="../css/modif.css">
 </head>
 <body>
 
@@ -63,7 +64,30 @@
         <input type="text" id="name_jeu_image" name="name_jeu_image" required>
 
         <label for="image">Nouvelle image</label>
-        <input type="text" name="image" id="image" required>
+        <input type="text" name="image_url" id="image_url" required>
+
+        <input type="submit" value="Modifier">
+    </form>
+
+    <!-- Launcher -->
+    <form class="container" action="../php/modif.php" method="post">
+        <input type="hidden" name="action" value="updateLauncher">
+
+        <h3>Changer le launcher</h3>
+
+        <label for="name">Nom du jeu :</label>
+        <input type="text" id="name_jeu_launcher" name="name_jeu_launcher" required>
+
+        <label for="image">Nouveau Launcher :</label>
+        <select name="nom_launcher" id="nom_launcher" required>
+            <option value="Steam">Steam</option>
+            <option value="Epic">Epic</option>
+            <option value="Amazon">Amazon</option>
+            <option value="Origin">Origin</option>
+            <option value="Uplay">Uplay</option>
+            <option value="Gog">Gog</option>
+            <option value="Autre">Autre</option>
+        </select>
 
         <input type="submit" value="Modifier">
     </form>
