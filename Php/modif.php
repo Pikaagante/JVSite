@@ -132,6 +132,93 @@ class Modif
             echo "Erreur d'insertion : " . $e->getMessage();
         }
     }
+
+    public function updateNote($name_jeu_note, $note){
+        try {
+            $sql = "UPDATE jv SET note = :note WHERE nom_jeu = :nom_jeu";
+            $stmt = $this->database->getConnection()->prepare($sql);
+
+            $stmt->bindParam(':nom_jeu', $name_jeu_note, PDO::PARAM_STR);
+            $stmt->bindParam(':note', $note, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            $updatedRows = $stmt->rowCount();
+            if ($updatedRows > 0) {
+                header('Location: ../Html/accueil.php');
+            } else {
+                echo "La modification a échoué.";
+            }
+        } catch (PDOException $e) {
+            echo "Erreur d'insertion : " . $e->getMessage();
+        }
+    }
+
+    public function updatePlateforme($name_jeu_plateforme, $plateforme){
+        try {
+            $sql = "UPDATE jv SET plateforme = :plateforme WHERE nom_jeu = :nom_jeu";
+            $stmt = $this->database->getConnection()->prepare($sql);
+
+            $stmt->bindParam(':nom_jeu', $name_jeu_plateforme, PDO::PARAM_STR);
+            $stmt->bindParam(':plateforme', $plateforme, PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            $updatedRows = $stmt->rowCount();
+            if ($updatedRows > 0) {
+                header('Location: ../Html/accueil.php');
+            } else {
+                echo "La modification a échoué.";
+            }
+        } catch (PDOException $e) {
+            echo "Erreur d'insertion : " . $e->getMessage();
+        }
+    }
+
+    public function updateStyle($name_jeu_style, $style){
+        try {
+            $sql = "UPDATE jv SET style = :style WHERE nom_jeu = :nom_jeu";
+            $stmt = $this->database->getConnection()->prepare($sql);
+
+            $stmt->bindParam(':nom_jeu', $name_jeu_style, PDO::PARAM_STR);
+            $stmt->bindParam(':style', $style, PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            $updatedRows = $stmt->rowCount();
+            if ($updatedRows > 0) {
+                header('Location: ../Html/accueil.php');
+            } else {
+                echo "La modification a échoué.";
+            }
+        } catch (PDOException $e) {
+            echo "Erreur d'insertion : " . $e->getMessage();
+        }
+    }
+
+    public function updateSupprimer($id_jeu){
+        try {
+            $sql = "DELETE FROM jv WHERE id_jeu = :id_jeu";
+            $stmt = $this->database->getConnection()->prepare($sql);
+
+            $stmt->bindParam(':id_jeu', $id_jeu, PDO::PARAM_INT);
+
+            $stmt->execute();
+
+            $updatedRows = $stmt->rowCount();
+            if ($updatedRows > 0) {
+                header('Location: ../Html/accueil.php');
+            } else {
+                echo "La suppression a échoué.";
+            }
+        } catch (PDOException $e) {
+            echo "Erreur de suppression : " . $e->getMessage();
+        }
+    }
+
+    public function updateAjouterDossier($name_jeu_dossier, $dossier){
+
+    }
 }
 
 
@@ -176,6 +263,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nom_launcher =$_POST['nom_launcher'];
 
             $modif->updateLauncher($name_jeu_launcher, $nom_launcher);
+
+        // Note
+        } elseif ($_POST['action'] === 'updateNote' && isset($_POST['name_jeu_note'])){
+            $name_jeu_note = $_POST['name_jeu_note'];
+            $note = $_POST['note'];
+
+            $modif->updateNote($name_jeu_note, $note);
+
+        // Plateforme
+        } elseif ($_POST['action'] === 'updatePlateforme' && isset($_POST['name_jeu_plateforme'])){
+            $name_jeu_plateforme = $_POST['name_jeu_plateforme'];
+            $plateforme = $_POST['plateforme'];
+
+            $modif->updatePlateforme($name_jeu_plateforme, $plateforme);
+
+        // Style
+        } elseif ($_POST['action'] === 'updateStyle' && isset($_POST['name_jeu_style'])){
+            $name_jeu_style = $_POST['name_jeu_style'];
+            $style = $_POST['style'];
+
+            $modif->updateStyle($name_jeu_style, $style);
+
+        // Supprimer
+        } elseif ($_POST['action'] === 'updateSupprimer' && isset($_POST['id_jeu'])){
+            $id_jeu = $_POST['id_jeu'];
+
+            $modif->updateSupprimer($id_jeu);
         }
     }
 }
