@@ -33,7 +33,7 @@ class Modif
 
                 $updatedRows = $stmt->rowCount();
                 if ($updatedRows > 0) {
-                    header('Location: ../Html/accueil.php');
+                    header('Location: ../pages/accueil.php');
                 } else {
                     echo "La modification du nom a échoué.";
                 }
@@ -58,7 +58,7 @@ class Modif
 
             $updatedRows = $stmt->rowCount();
             if ($updatedRows > 0) {
-                header('Location: ../Html/accueil.php');
+                header('Location: ../pages/accueil.php');
             } else {
                 echo "La modification a échoué.";
             }
@@ -80,7 +80,7 @@ class Modif
 
             $updatedRows = $stmt->rowCount();
             if ($updatedRows > 0) {
-                header('Location: ../Html/accueil.php');
+                header('Location: ../pages/accueil.php');
             } else {
                 echo "La modification a échoué.";
             }
@@ -102,7 +102,7 @@ class Modif
 
             $updatedRows = $stmt->rowCount();
             if ($updatedRows > 0) {
-                header('Location: ../Html/accueil.php');
+                header('Location: ../pages/accueil.php');
             } else {
                 echo "La modification a échoué.";
             }
@@ -124,7 +124,7 @@ class Modif
         
         $updatedRows = $stmt->rowCount();
             if ($updatedRows > 0) {
-                header('Location: ../Html/accueil.php');
+                header('Location: ../pages/accueil.php');
             } else {
                 echo "La modification a échoué.";
             }
@@ -145,7 +145,7 @@ class Modif
 
             $updatedRows = $stmt->rowCount();
             if ($updatedRows > 0) {
-                header('Location: ../Html/accueil.php');
+                header('Location: ../pages/accueil.php');
             } else {
                 echo "La modification a échoué.";
             }
@@ -166,7 +166,7 @@ class Modif
 
             $updatedRows = $stmt->rowCount();
             if ($updatedRows > 0) {
-                header('Location: ../Html/accueil.php');
+                header('Location: ../pages/accueil.php');
             } else {
                 echo "La modification a échoué.";
             }
@@ -187,7 +187,7 @@ class Modif
 
             $updatedRows = $stmt->rowCount();
             if ($updatedRows > 0) {
-                header('Location: ../Html/accueil.php');
+                header('Location: ../pages/accueil.php');
             } else {
                 echo "La modification a échoué.";
             }
@@ -207,7 +207,7 @@ class Modif
 
             $updatedRows = $stmt->rowCount();
             if ($updatedRows > 0) {
-                header('Location: ../Html/accueil.php');
+                header('Location: ../pages/accueil.php');
             } else {
                 echo "La suppression a échoué.";
             }
@@ -216,8 +216,36 @@ class Modif
         }
     }
 
-    public function updateAjouterDossier($name_jeu_dossier, $dossier){
+    public function addGame($name_add, $note_add, $fini_add, $finiN_add, $finP_add, $success_add, $VR_add, $image_add, $plateforme_add, $launcher_add, $style_add, $description_add){
+        try {
+        $sql = "INSERT INTO jv (nom_jeu, note, fini, non_fini, fini_pas_de_fin, fini_success, VR, image_url, plateforme, launcher, style, description) 
+        VALUES (:nom, :note, :fini, :non_fini, :fini_pas_de_fin, :fini_success, :VR, :lien_image, :plateforme, :launcher, :style, :description)";
+        $stmt = $this->database->getConnection()->prepare($sql);
 
+        $stmt->bindParam(':nom', $name_add, PDO::PARAM_STR);
+        $stmt->bindParam(':note', $note_add, PDO::PARAM_INT);
+        $stmt->bindParam(':fini', $fini_add, PDO::PARAM_INT);
+        $stmt->bindParam(':non_fini', $finiN_add, PDO::PARAM_INT);
+        $stmt->bindParam(':fini_pas_de_fin', $finP_add, PDO::PARAM_INT);
+        $stmt->bindParam(':fini_success', $success_add, PDO::PARAM_INT);
+        $stmt->bindParam(':VR', $VR_add, PDO::PARAM_INT);
+        $stmt->bindParam(':lien_image', $image_add, PDO::PARAM_STR);
+        $stmt->bindParam(':plateforme', $plateforme_add, PDO::PARAM_STR);
+        $stmt->bindParam(':launcher', $launcher_add, PDO::PARAM_STR);
+        $stmt->bindParam(':style', $style_add, PDO::PARAM_STR);
+        $stmt->bindParam(':description', $description_add, PDO::PARAM_STR);
+
+        $stmt->execute();
+
+        $updatedRows = $stmt->rowCount();
+            if ($updatedRows > 0) {
+                header('Location: ../pages/accueil.php');
+            } else {
+                echo "La suppression a échoué.";
+            }
+        } catch (PDOException $e) {
+            echo "Erreur de suppression : " . $e->getMessage();
+        }
     }
 }
 
@@ -290,6 +318,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_jeu = $_POST['id_jeu'];
 
             $modif->updateSupprimer($id_jeu);
+
+        // Ajouter un jeu
+        } elseif ($_POST['action'] === 'addGame' && isset($_POST['name_add'])){
+            $name_add = $_POST['name_add'];
+            $note_add = $_POST['note_add'];
+            $fini_add = isset($_POST['fini_add']) ? 1 : 0;
+            $finiN_add = isset($_POST['finiN_add']) ? 1 : 0;
+            $finP_add = isset($_POST['finP_add']) ? 1 : 0;
+            $success_add = isset($_POST['success_add']) ? 1 : 0;
+            $VR_add = isset($_POST['VR_add']) ? 1 : 0;
+            $image_add = $_POST['image_add'];
+            $plateforme_add = $_POST['plateforme_add'];
+            $launcher_add = $_POST['launcher_add'];
+            $style_add = $_POST['style_add'];
+            $description_add = $_POST['description_add'];
+
+            $modif->addGame($name_add, $note_add, $fini_add, $finiN_add, $finP_add, $success_add, $VR_add, $image_add, $plateforme_add, $launcher_add, $style_add, $description_add);
         }
     }
 }

@@ -16,6 +16,16 @@
   Navbar
   </a>
 
+  <a 
+  href="modif.php" class="navbar-brand mb-0 h1">
+  modif
+  </a>
+
+  <a 
+  href="ajout.php" class="navbar-brand mb-0 h1">
+  ajout
+  </a>
+
 </nav>
 
 
@@ -36,7 +46,7 @@
     </form>
 
     <!-- Fini jeu -->
-    <form class="container" action="../php/modif.php" method="post">
+    <form class="container" action="../../php/modif.php" method="post">
         <input type="hidden" name="action" value="updateFini">
 
         <h3>Finir</h3>
@@ -52,7 +62,7 @@
     
 
     <!-- Fini avec succes -->
-    <form class="container" action="../php/modif.php" method="post">
+    <form class="container" action="../../php/modif.php" method="post">
         <input type="hidden" name="action" value="updateFiniSucces">
 
         <h3>Finir avec succès</h3>
@@ -67,7 +77,7 @@
     </form>
 
     <!-- Changer une image -->
-    <form class="container" action="../php/modif.php" method="post">
+    <form class="container" action="../../php/modif.php" method="post">
         <input type="hidden" name="action" value="updateImage">
 
         <h3>Changer image</h3>
@@ -82,7 +92,7 @@
     </form>
 
     <!-- Launcher -->
-    <form class="container" action="../php/modif.php" method="post">
+    <form class="container" action="../../php/modif.php" method="post">
         <input type="hidden" name="action" value="updateLauncher">
 
         <h3>Changer le launcher</h3>
@@ -105,7 +115,7 @@
     </form>
 
     <!-- Note -->
-     <form class="container" action="../php/modif.php" method="post">
+     <form class="container" action="../../php/modif.php" method="post">
         <input type="hidden" name="action" value="updateNote">
 
         <h3>Changer la note</h3>
@@ -120,7 +130,7 @@
     </form>
 
     <!-- Plateforme -->
-    <form class="container" action="../php/modif.php" method="post">
+    <form class="container" action="../../php/modif.php" method="post">
         <input type="hidden" name="action" value="updatePlateforme">
 
         <h3>Changer la plateforme</h3>
@@ -148,7 +158,7 @@
     </form>
 
     <!-- Style -->
-    <form class="container" action="../php/modif.php" method="post">
+    <form class="container" action="../../php/modif.php" method="post">
     <input type="hidden" name="action" value="updateStyle">
 
     <h3>Changer le style</h3>
@@ -194,7 +204,7 @@
     </form>
 
     <!-- Supprimer -->
-    <form class="container" action="../php/modif.php" method="post">
+    <form class="container" action="../../php/modif.php" method="post">
         <input type="hidden" name="action" value="updateSupprimer">
 
         <h3>Supprimer</h3>
