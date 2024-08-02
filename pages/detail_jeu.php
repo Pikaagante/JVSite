@@ -1,0 +1,71 @@
+<?php
+require_once ('../php/get.php');
+require_once ('../php/Config/Config.php');
+require_once ('../php/BDD/Database.php');
+
+$config = new Config();
+$database = new Database($config->getServername(), $config->getUsername(), $config->getPassword(), $config->getDBName());
+$get = new Get($database);
+
+$nom_jeu = $_GET['nom_jeu'] ?? '';
+$games = $get->GetJeu('Cult of the Lamb');
+$steamDetails = $get->GetSteamGameDetails('Cult of the Lamb');
+
+// Extracting Steam information
+$metacritic_score = isset($steamDetails['metacritic']['score']) ? $steamDetails['metacritic']['score'] : 'N/A';
+$recommendations = isset($steamDetails['recommendations']['total']) ? $steamDetails['recommendations']['total'] : 'N/A';
+$release_date = isset($steamDetails['release_date']['date']) ? $steamDetails['release_date']['date'] : 'N/A';
+$developer = isset($steamDetails['developers'][0]) ? $steamDetails['developers'][0] : 'N/A';
+$publisher = isset($steamDetails['publishers'][0]) ? $steamDetails['publishers'][0] : 'N/A';
+$price = isset($steamDetails['price_overview']['final_formatted']) ? $steamDetails['price_overview']['final_formatted'] : 'N/A';
+$is_free = isset($steamDetails['is_free']) && $steamDetails['is_free'] ? 'Yes' : 'No';
+
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <a href="accueil.php" class="navbar-brand mb-0 h1">Navbar</a>
+    <a href="updateSql/ajout.php" class="navbar-brand mb-0 h1">ajout</a>
+  </nav>
+
+  <div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="display-4"><?php echo htmlspecialchars($games['nom_jeu']); ?></h1>
+      <p class="lead"><strong>Description:</strong> <?php echo htmlspecialchars($games['description']); ?></p>
+      <p><strong>Note:</strong> <?php echo htmlspecialchars($games['note']); ?></p>
+      <p><strong>Plateforme:</strong> <?php echo htmlspecialchars($games['plateforme']); ?></p>
+      <p><strong>Launcher:</strong> <?php echo htmlspecialchars($games['launcher']); ?></p>
+      <p><strong>Style:</strong> <?php echo htmlspecialchars($games['style']); ?></p>
+      <p><strong>VR:</strong> <?php echo $games['VR'] ? 'Yes' : 'No'; ?></p>
+      <p><strong>Fini:</strong> <?php echo $games['fini'] ? 'Yes' : 'No'; ?></p>
+      <p><strong>Description :</strong> <?php echo htmlspecialchars($games['description']); ?></p>
+      <!-- Steam Information -->
+      <h2>Steam</h2>
+      <p><strong>Metacritic Score :</strong> <?php echo $metacritic_score; ?></p>
+      <p><strong>Recommendations :</strong> <?php echo $recommendations; ?></p>
+      <p><strong>Release Date :</strong> <?php echo $release_date; ?></p>
+      <p><strong>Developer :</strong> <?php echo $developer; ?></p>
+      <p><strong>Publisher :</strong> <?php echo $publisher; ?></p>
+      <p><strong>Price :</strong> <?php echo $price; ?></p>
+      <p><strong>Is Free :</strong> <?php echo $is_free; ?></p>
+      <!-- More details can be added as needed -->
+    </div>
+    <div class="col-md-4">
+      <img src="<?php echo htmlspecialchars($games['image_url']); ?>" alt="Game Image" class="img-fluid rounded-start">
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
