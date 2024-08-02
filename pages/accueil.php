@@ -7,11 +7,9 @@ $config = new Config();
 $database = new Database($config->getServername(), $config->getUsername(), $config->getPassword(), $config->getDBName());
 $get = new Get($database);
 
-// Vérifiez si un des filtres est défini
 if (isset($_GET['random']) && $_GET['random'] == 'true') {
-  $games = $get->GetRandom(); // Utilisez GetRandom si 'random' est présent dans l'URL
+  $games = $get->GetRandom();
 } else {
-  // Le reste de la logique reste inchangé
   if (isset($_POST['search']) || isset($_POST['vr']) || isset($_POST['fini']) || isset($_POST['style']) || isset($_POST['launcher']) || isset($_POST['plateforme']) || isset($_POST['note']) || isset($_POST['order'])) {
     $games = $get->GetFiltre($_POST['search'] ?? '', $_POST['vr'] ?? '', $_POST['fini'] ?? '', $_POST['style'] ?? '', $_POST['launcher'] ?? '', $_POST['plateforme'] ?? '', $_POST['note'] ?? '');
   } else {
@@ -31,11 +29,8 @@ if (isset($_GET['random']) && $_GET['random'] == 'true') {
   <style>
     .card-img {
       height: 200px;
-      /* Ajustez cette valeur selon vos besoins */
       width: 100%;
-      /* Cela garantit que l'image occupe toute la largeur de la carte */
       object-fit: cover;
-      /* Cela garantit que l'image couvre l'espace disponible sans être déformée */
     }
   </style>
 </head>
@@ -149,11 +144,11 @@ if (isset($_GET['random']) && $_GET['random'] == 'true') {
           </select>
         </div>
         <div class="col-lg-2">
-          <button type="submit" class="btn btn-primary w-100">Rechercher</button>
-
-          <a href="accueil.php?random=true" class="btn btn-primary w-100">Aléatoire</a>
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-dark">Rechercher</button>
+            <a href="accueil.php?random=true" class="btn btn-dark">Aléatoire</a>
+          </div>
         </div>
-
       </div>
     </form>
   </div>
@@ -165,6 +160,7 @@ if (isset($_GET['random']) && $_GET['random'] == 'true') {
       <?php foreach ($games as $game): ?>
         <div class="col-md-3 mb-3">
           <div class="card">
+            <a href="detail_jeu.php?gameName=<?= urlencode($game['nom_jeu']) ?>" class="stretched-link"></a>
             <div class="row g-0">
               <div class="col-md-12">
                 <img src="<?= htmlspecialchars($game['image_url']) ?>" class="img-fluid rounded-start card-img"
@@ -176,9 +172,6 @@ if (isset($_GET['random']) && $_GET['random'] == 'true') {
                   <p class="card-text">Note : <?= htmlspecialchars($game['note']) ?></p>
                 </div>
               </div>
-              <form class="container" action="#" method="post">
-                <input type="submit" value="Ajouter au dossier">
-              </form>
             </div>
           </div>
         </div>
