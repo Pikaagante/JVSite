@@ -126,6 +126,16 @@ class Get
         if ($steamStoreData === null || !isset($steamStoreData[$gameId]['data'])) {
             return "Error decoding game details from Steam Store";
         }
+
+        $steamStoreData[$gameId]['data']['additionalDetails'] = [
+            'description' => $steamStoreData[$gameId]['data']['detailed_description'],
+            'images' => [
+                'header_image' => $steamStoreData[$gameId]['data']['header_image'],
+                'screenshots' => array_map(function($screenshot) {
+                    return $screenshot['path_full'];
+                }, $steamStoreData[$gameId]['data']['screenshots']),
+            ],
+        ];
     
         return $steamStoreData[$gameId]['data'];
     }

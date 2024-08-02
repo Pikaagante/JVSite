@@ -13,6 +13,7 @@ if (isset($_GET['gameName'])) {
 
   $steamDetails = $get->GetSteamGameDetails($gameName);
 } else {
+  $steamDetails = [];
 }
 
 // Extracting Steam information
@@ -23,6 +24,13 @@ $developer = isset($steamDetails['developers'][0]) ? $steamDetails['developers']
 $publisher = isset($steamDetails['publishers'][0]) ? $steamDetails['publishers'][0] : 'N/A';
 $price = isset($steamDetails['price_overview']['final_formatted']) ? $steamDetails['price_overview']['final_formatted'] : 'N/A';
 $is_free = isset($steamDetails['is_free']) && $steamDetails['is_free'] ? 'Yes' : 'No';
+$steam_appid = isset($steamDetails['steam_appid']) ? $steamDetails['steam_appid'] : 'N/A';
+$categories = isset($steamDetails['categories']) ? array_map(function ($cat) {
+  return $cat['description'];
+}, $steamDetails['categories']) : ['N/A'];
+$genres = isset($steamDetails['genres']) ? array_map(function ($gen) {
+  return $gen['description'];
+}, $steamDetails['genres']) : ['N/A'];
 ?>
 
 <!doctype html>
@@ -62,16 +70,33 @@ $is_free = isset($steamDetails['is_free']) && $steamDetails['is_free'] ? 'Yes' :
         <p><strong>Publisher :</strong> <?php echo $publisher; ?></p>
         <p><strong>Price :</strong> <?php echo $price; ?></p>
         <p><strong>Is Free :</strong> <?php echo $is_free; ?></p>
-        <!-- More details can be added as needed -->
+        <p><strong>Steam AppID :</strong> <?php echo $steam_appid; ?></p>
+        <p><strong>Categories :</strong> <?php echo implode(', ', $categories); ?></p>
+        <p><strong>Genres :</strong> <?php echo implode(', ', $genres); ?></p>
+
+
+        <p><strong>Description
+            :</strong><?php echo htmlspecialchars(strip_tags($steamDetails['additionalDetails']['description'] ?? 'Description not available')); ?>
+        </p>
+
+
       </div>
       <div class="col-md-4">
+        <h3>Images</h3>
+        <img src="<?php echo htmlspecialchars($steamDetails['additionalDetails']['images']['header_image'] ?? ''); ?>"
+          alt="Header Image" class="img-fluid">
+          <?php if ($steam_appid !== 'N/A'): ?>
+          <a href="steam://rungameid/<?php echo $steam_appid; ?>" class="btn btn-dark w-100">Lancer le jeu</a>
+        <?php endif; ?>
+        <?php if (!empty($steamDetails['additionalDetails']['images']['screenshots'])): ?>
+          <?php foreach ($steamDetails['additionalDetails']['images']['screenshots'] as $screenshot): ?>
+            <img src="<?php echo htmlspecialchars($screenshot); ?>" alt="Game Screenshot" class="img-fluid">
+          <?php endforeach; ?>
+        <?php else: ?>
+          <p>No screenshots available.</p>
+        <?php endif; ?>
         <img src="<?php echo htmlspecialchars($games['image_url']); ?>" alt="Game Image"
           class="img-fluid rounded-start">
-        <!-- Bouton pour lancer le jeu via Steam -->
-        <?php if (isset($steamDetails['steam_appid'])): ?>
-          <a href="steam://rungameid/<?php echo $steamDetails['steam_appid']; ?>" class="btn btn-dark w-100">Lancer le
-            jeu</a>
-        <?php endif; ?>
       </div>
     </div>
   </div>
