@@ -11,7 +11,7 @@
 
 <body>
     <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
-        <a href="#" class="navbar-brand mb-0 h1">
+        <a href="../accueil.php" class="navbar-brand mb-0 h1">
             Navbar
         </a>
 
