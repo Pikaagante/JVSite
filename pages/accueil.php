@@ -40,8 +40,8 @@ if (isset($_GET['random']) && $_GET['random'] == 'true') {
   <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
     <a href="accueil.php" class="navbar-brand mb-0 h1">Navbar</a>
     <a href="updateSql/ajout.php" class="navbar-brand mb-0 h1">ajout</a>
+    <a href="analyse.php" class="navbar-brand mb-0 h1">Analyse</a>
   </nav>
-
 
   <div class="container mt-3">
     <form action="" method="post">
