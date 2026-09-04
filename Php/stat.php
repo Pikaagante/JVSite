@@ -1,6 +1,6 @@
 <?php
-require_once ('Config/Config.php');
-require_once ('BDD/Database.php');
+require_once('Config/Config.php');
+require_once('BDD/Database.php');
 
 class Stat
 {
@@ -16,9 +16,9 @@ class Stat
         $sql = "SELECT COUNT(*) FROM jv WHERE VR = 1 AND note >= 1";
         $stmt = $this->database->getConnection()->prepare($sql);
         $stmt->execute();
+
         return $stmt->fetchColumn();
     }
-
 
     public function getNbrJeuxPlateforme($plateforme)
     {
@@ -26,6 +26,7 @@ class Stat
         $stmt = $this->database->getConnection()->prepare($sql);
         $stmt->bindParam(':plateforme', $plateforme, PDO::PARAM_STR);
         $stmt->execute();
+
         return $stmt->fetchColumn();
     }
 
@@ -35,6 +36,7 @@ class Stat
         $stmt = $this->database->getConnection()->prepare($sql);
         $stmt->bindParam(':launcher', $launcher, PDO::PARAM_STR);
         $stmt->execute();
+
         return $stmt->fetchColumn();
     }
 
@@ -44,6 +46,7 @@ class Stat
         $stmt = $this->database->getConnection()->prepare($sql);
         $stmt->bindParam(':style', $style, PDO::PARAM_STR);
         $stmt->execute();
+
         return $stmt->fetchColumn();
     }
 
@@ -53,6 +56,7 @@ class Stat
         $stmt = $this->database->getConnection()->prepare($sql);
         $stmt->bindParam(':idDossier', $idDossier, PDO::PARAM_INT);
         $stmt->execute();
+
         return $stmt->fetchColumn();
     }
 }

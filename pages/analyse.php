@@ -81,8 +81,8 @@ $nbrJeuxDossier20xx = $stat->getNbrJeuxDossier(5);
 <body>
 
   <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
-    <a href="accueil.php" class="navbar-brand mb-0 h1">Navbar</a>
-    <a href="updateSql/ajout.php" class="navbar-brand mb-0 h1">ajout</a>
+    <a href="accueil.php" class="navbar-brand mb-0 h1">Ma bibliothèque</a>
+    <a href="updateSql/ajout.php" class="navbar-brand mb-0 h1">Modification</a>
     <a href="analyse.php" class="navbar-brand mb-0 h1">Analyse</a>
   </nav>
 
@@ -230,243 +230,243 @@ $nbrJeuxDossier20xx = $stat->getNbrJeuxDossier(5);
 
           <h3>Nombre de jeux par Style</h3>
           <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Action/Aventure :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleAction_Aventure; ?></p>
-                  </div>
-                </div>
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Action/Aventure :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleAction_Aventure; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Automatisation :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleAutomatisation; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Automatisation :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleAutomatisation; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Bac à sable :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleBac_a_sable; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Bac à sable :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleBac_a_sable; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Battle Royale :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleBR; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Battle Royale :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleBR; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Combat :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleCombat; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Combat :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleCombat; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Die and Retry :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleDie_and_retry; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Die and Retry :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleDie_and_retry; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Horreur :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleHorreur; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Horreur :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleHorreur; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Idle :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleIdle; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Idle :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleIdle; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Lego :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleLego; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Lego :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleLego; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Metroidvania :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleMetroidvania; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Metroidvania :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleMetroidvania; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux MMO :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleMMO; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux MMO :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleMMO; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Plateforme :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStylePlateforme; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Plateforme :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStylePlateforme; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Pokemon Like :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStylePokemon_Like; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Pokemon Like :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStylePokemon_Like; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Rogue Like :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleRogue_Like; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Rogue Like :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleRogue_Like; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Simulation :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleSimulation; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Simulation :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleSimulation; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Stratégie :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleStratégie; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Stratégie :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleStratégie; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Deck Building :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleDeck_Building; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Deck Building :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleDeck_Building; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Survie :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleSurvie; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Survie :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleSurvie; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Tir :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleTir; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Tir :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleTir; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Tour :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleTour; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Tour :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleTour; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux VN :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleVN; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux VN :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleVN; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Deck Egnime :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleEgnime; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Deck Egnime :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleEgnime; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Rythm :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleRythme; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Rythm :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleRythme; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux Deck Autre :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxStyleAutre; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux Deck Autre :</h5>
+                <p class="card-text"><?php echo $nbrJeuxStyleAutre; ?></p>
               </div>
+            </div>
+          </div>
 
-              <h3>Nombre de jeux par dossier</h3>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux dans 2023 :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxDossier2023; ?></p>
-                  </div>
-                </div>
+          <h3>Nombre de jeux par dossier</h3>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux dans 2023 :</h5>
+                <p class="card-text"><?php echo $nbrJeuxDossier2023; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux dans 2024 :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxDossier2024; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux dans 2024 :</h5>
+                <p class="card-text"><?php echo $nbrJeuxDossier2024; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux dans Finir :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxDossierFinir; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux dans Finir :</h5>
+                <p class="card-text"><?php echo $nbrJeuxDossierFinir; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux dans Wishlist :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxDossierWishlist; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux dans Wishlist :</h5>
+                <p class="card-text"><?php echo $nbrJeuxDossierWishlist; ?></p>
               </div>
-              <div class="col-md-3 mb-4">
-                <div class="card h-100">
-                  <div class="card-body">
-                    <h5 class="card-title">Nombre de jeux dans 20xx :</h5>
-                    <p class="card-text"><?php echo $nbrJeuxDossier20xx; ?></p>
-                  </div>
-                </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Nombre de jeux dans 20xx :</h5>
+                <p class="card-text"><?php echo $nbrJeuxDossier20xx; ?></p>
               </div>
+            </div>
+          </div>
 
         </div>
       </div>
-
+    
 </body>
 
 </html>

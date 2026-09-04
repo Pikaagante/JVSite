@@ -1,6 +1,6 @@
 <?php
-require_once ('Config/Config.php');
-require_once ('BDD/Database.php');
+require_once('Config/Config.php');
+require_once('BDD/Database.php');
 
 class Modif
 {
@@ -25,13 +25,12 @@ class Modif
                 // Mettre à jour le nom du jeu
                 $sql = "UPDATE jv SET nom_jeu = :new_name WHERE nom_jeu = :old_name";
                 $stmt = $this->database->getConnection()->prepare($sql);
-
                 $stmt->bindParam(':old_name', $old_name, PDO::PARAM_STR);
                 $stmt->bindParam(':new_name', $new_name, PDO::PARAM_STR);
-
                 $stmt->execute();
 
                 $updatedRows = $stmt->rowCount();
+
                 if ($updatedRows > 0) {
                     header('Location: ../pages/accueil.php');
                 } else {
@@ -50,13 +49,12 @@ class Modif
         try {
             $sql = "UPDATE jv SET fini = :fini WHERE nom_jeu = :name";
             $stmt = $this->database->getConnection()->prepare($sql);
-
             $stmt->bindParam(':name', $name_jeu_fini, PDO::PARAM_STR);
             $stmt->bindParam(':fini', $fini, PDO::PARAM_INT);
-
             $stmt->execute();
 
             $updatedRows = $stmt->rowCount();
+
             if ($updatedRows > 0) {
                 header('Location: ../pages/accueil.php');
             } else {
@@ -72,13 +70,12 @@ class Modif
         try {
             $sql = "UPDATE jv SET fini_success = :fini_success WHERE nom_jeu = :nom_jeu";
             $stmt = $this->database->getConnection()->prepare($sql);
-
             $stmt->bindParam(':nom_jeu', $name_jeu_success, PDO::PARAM_STR);
             $stmt->bindParam(':fini_success', $fini_success, PDO::PARAM_INT);
-
             $stmt->execute();
 
             $updatedRows = $stmt->rowCount();
+
             if ($updatedRows > 0) {
                 header('Location: ../pages/accueil.php');
             } else {
@@ -94,13 +91,12 @@ class Modif
         try {
             $sql = "UPDATE jv SET image_url = :image_url WHERE nom_jeu = :nom_jeu";
             $stmt = $this->database->getConnection()->prepare($sql);
-
             $stmt->bindParam(':nom_jeu', $name_jeu_image, PDO::PARAM_STR);
             $stmt->bindParam(':image_url', $image_url, PDO::PARAM_STR);
-
             $stmt->execute();
 
             $updatedRows = $stmt->rowCount();
+
             if ($updatedRows > 0) {
                 header('Location: ../pages/accueil.php');
             } else {
@@ -114,15 +110,14 @@ class Modif
     public function updateLauncher($name_jeu_launcher, $nom_launcher)
     {
         try {
-        $sql = "UPDATE jv SET launcher = :nom_launcher WHERE nom_jeu = :nom_jeu";
-        $stmt = $this->database->getConnection()->prepare($sql);
+            $sql = "UPDATE jv SET launcher = :nom_launcher WHERE nom_jeu = :nom_jeu";
+            $stmt = $this->database->getConnection()->prepare($sql);
+            $stmt->bindParam(':nom_jeu', $name_jeu_launcher, PDO::PARAM_STR);
+            $stmt->bindParam(':nom_launcher', $nom_launcher, PDO::PARAM_STR);
+            $stmt->execute();
 
-        $stmt->bindParam(':nom_jeu', $name_jeu_launcher, PDO::PARAM_STR);
-        $stmt->bindParam(':nom_launcher', $nom_launcher, PDO::PARAM_STR);
+            $updatedRows = $stmt->rowCount();
 
-        $stmt->execute();
-        
-        $updatedRows = $stmt->rowCount();
             if ($updatedRows > 0) {
                 header('Location: ../pages/accueil.php');
             } else {
@@ -133,17 +128,17 @@ class Modif
         }
     }
 
-    public function updateNote($name_jeu_note, $note){
+    public function updateNote($name_jeu_note, $note)
+    {
         try {
             $sql = "UPDATE jv SET note = :note WHERE nom_jeu = :nom_jeu";
             $stmt = $this->database->getConnection()->prepare($sql);
-
             $stmt->bindParam(':nom_jeu', $name_jeu_note, PDO::PARAM_STR);
             $stmt->bindParam(':note', $note, PDO::PARAM_INT);
-
             $stmt->execute();
 
             $updatedRows = $stmt->rowCount();
+
             if ($updatedRows > 0) {
                 header('Location: ../pages/accueil.php');
             } else {
@@ -154,17 +149,17 @@ class Modif
         }
     }
 
-    public function updatePlateforme($name_jeu_plateforme, $plateforme){
+    public function updatePlateforme($name_jeu_plateforme, $plateforme)
+    {
         try {
             $sql = "UPDATE jv SET plateforme = :plateforme WHERE nom_jeu = :nom_jeu";
             $stmt = $this->database->getConnection()->prepare($sql);
-
             $stmt->bindParam(':nom_jeu', $name_jeu_plateforme, PDO::PARAM_STR);
             $stmt->bindParam(':plateforme', $plateforme, PDO::PARAM_STR);
-
             $stmt->execute();
 
             $updatedRows = $stmt->rowCount();
+
             if ($updatedRows > 0) {
                 header('Location: ../pages/accueil.php');
             } else {
@@ -175,17 +170,17 @@ class Modif
         }
     }
 
-    public function updateStyle($name_jeu_style, $style){
+    public function updateStyle($name_jeu_style, $style)
+    {
         try {
             $sql = "UPDATE jv SET style = :style WHERE nom_jeu = :nom_jeu";
             $stmt = $this->database->getConnection()->prepare($sql);
-
             $stmt->bindParam(':nom_jeu', $name_jeu_style, PDO::PARAM_STR);
             $stmt->bindParam(':style', $style, PDO::PARAM_STR);
-
             $stmt->execute();
 
             $updatedRows = $stmt->rowCount();
+
             if ($updatedRows > 0) {
                 header('Location: ../pages/accueil.php');
             } else {
@@ -196,16 +191,16 @@ class Modif
         }
     }
 
-    public function updateSupprimer($id_jeu){
+    public function updateSupprimer($id_jeu)
+    {
         try {
             $sql = "DELETE FROM jv WHERE id_jeu = :id_jeu";
             $stmt = $this->database->getConnection()->prepare($sql);
-
             $stmt->bindParam(':id_jeu', $id_jeu, PDO::PARAM_INT);
-
             $stmt->execute();
 
             $updatedRows = $stmt->rowCount();
+
             if ($updatedRows > 0) {
                 header('Location: ../pages/accueil.php');
             } else {
@@ -216,28 +211,29 @@ class Modif
         }
     }
 
-    public function addGame($name_add, $note_add, $fini_add, $finiN_add, $finP_add, $success_add, $VR_add, $image_add, $plateforme_add, $launcher_add, $style_add, $description_add){
+    public function addGame($name_add, $note_add, $fini_add, $finiN_add, $finP_add, $success_add, $VR_add, $image_add, $plateforme_add, $launcher_add, $style_add, $description_add)
+    {
         try {
-        $sql = "INSERT INTO jv (nom_jeu, note, fini, non_fini, fini_pas_de_fin, fini_success, VR, image_url, plateforme, launcher, style, description) 
-        VALUES (:nom, :note, :fini, :non_fini, :fini_pas_de_fin, :fini_success, :VR, :lien_image, :plateforme, :launcher, :style, :description)";
-        $stmt = $this->database->getConnection()->prepare($sql);
+            $sql = "INSERT INTO jv (nom_jeu, note, fini, non_fini, fini_pas_de_fin, fini_success, VR, image_url, plateforme, launcher, style, description)
+                    VALUES (:nom, :note, :fini, :non_fini, :fini_pas_de_fin, :fini_success, :VR, :lien_image, :plateforme, :launcher, :style, :description)";
 
-        $stmt->bindParam(':nom', $name_add, PDO::PARAM_STR);
-        $stmt->bindParam(':note', $note_add, PDO::PARAM_INT);
-        $stmt->bindParam(':fini', $fini_add, PDO::PARAM_INT);
-        $stmt->bindParam(':non_fini', $finiN_add, PDO::PARAM_INT);
-        $stmt->bindParam(':fini_pas_de_fin', $finP_add, PDO::PARAM_INT);
-        $stmt->bindParam(':fini_success', $success_add, PDO::PARAM_INT);
-        $stmt->bindParam(':VR', $VR_add, PDO::PARAM_INT);
-        $stmt->bindParam(':lien_image', $image_add, PDO::PARAM_STR);
-        $stmt->bindParam(':plateforme', $plateforme_add, PDO::PARAM_STR);
-        $stmt->bindParam(':launcher', $launcher_add, PDO::PARAM_STR);
-        $stmt->bindParam(':style', $style_add, PDO::PARAM_STR);
-        $stmt->bindParam(':description', $description_add, PDO::PARAM_STR);
+            $stmt = $this->database->getConnection()->prepare($sql);
+            $stmt->bindParam(':nom', $name_add, PDO::PARAM_STR);
+            $stmt->bindParam(':note', $note_add, PDO::PARAM_INT);
+            $stmt->bindParam(':fini', $fini_add, PDO::PARAM_INT);
+            $stmt->bindParam(':non_fini', $finiN_add, PDO::PARAM_INT);
+            $stmt->bindParam(':fini_pas_de_fin', $finP_add, PDO::PARAM_INT);
+            $stmt->bindParam(':fini_success', $success_add, PDO::PARAM_INT);
+            $stmt->bindParam(':VR', $VR_add, PDO::PARAM_INT);
+            $stmt->bindParam(':lien_image', $image_add, PDO::PARAM_STR);
+            $stmt->bindParam(':plateforme', $plateforme_add, PDO::PARAM_STR);
+            $stmt->bindParam(':launcher', $launcher_add, PDO::PARAM_STR);
+            $stmt->bindParam(':style', $style_add, PDO::PARAM_STR);
+            $stmt->bindParam(':description', $description_add, PDO::PARAM_STR);
+            $stmt->execute();
 
-        $stmt->execute();
+            $updatedRows = $stmt->rowCount();
 
-        $updatedRows = $stmt->rowCount();
             if ($updatedRows > 0) {
                 header('Location: ../pages/accueil.php');
             } else {
@@ -249,78 +245,72 @@ class Modif
     }
 }
 
-
 $config = new Config();
-$database = new Database($config->getServername(), $config->getUsername(), $config->getPassword(), $config->getDBName());
+$database = new Database(
+    $config->getServername(),
+    $config->getUsername(),
+    $config->getPassword(),
+    $config->getDBName()
+);
 $modif = new Modif($database);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action'])) {
-
         // Nom jeu
         if ($_POST['action'] === 'updateName' && isset($_POST['nom_jeu']) && isset($_POST['nouveau_nom_jeu'])) {
             $old_name = $_POST['nom_jeu'];
             $new_name = $_POST['nouveau_nom_jeu'];
-
             $modif->updateName($old_name, $new_name);
 
         // Fini
         } elseif ($_POST['action'] === 'updateFini' && isset($_POST['name_jeu_fini'])) {
             $name_jeu_fini = $_POST['name_jeu_fini'];
             $fini = isset($_POST['fini']) ? 1 : 0;
-
             $modif->updateFini($name_jeu_fini, $fini);
 
         // Succes
         } elseif ($_POST['action'] === 'updateFiniSucces' && isset($_POST['name_jeu_success'])) {
             $name_jeu_success = $_POST['name_jeu_success'];
             $fini_success = isset($_POST['fini_success']) ? 1 : 0;
-
             $modif->updateFiniSucces($name_jeu_success, $fini_success);
 
         // Image
         } elseif ($_POST['action'] === 'updateImage' && isset($_POST['name_jeu_image'])) {
             $name_jeu_image = $_POST['name_jeu_image'];
             $image_url = $_POST['image_url'];
-
             $modif->updateImage($name_jeu_image, $image_url);
-        
-        // Launcher
-        }  elseif ($_POST['action'] === 'updateLauncher' && isset($_POST['name_jeu_launcher'])) {
-            $name_jeu_launcher = $_POST['name_jeu_launcher'];
-            $nom_launcher =$_POST['nom_launcher'];
 
+        // Launcher
+        } elseif ($_POST['action'] === 'updateLauncher' && isset($_POST['name_jeu_launcher'])) {
+            $name_jeu_launcher = $_POST['name_jeu_launcher'];
+            $nom_launcher = $_POST['nom_launcher'];
             $modif->updateLauncher($name_jeu_launcher, $nom_launcher);
 
         // Note
-        } elseif ($_POST['action'] === 'updateNote' && isset($_POST['name_jeu_note'])){
+        } elseif ($_POST['action'] === 'updateNote' && isset($_POST['name_jeu_note'])) {
             $name_jeu_note = $_POST['name_jeu_note'];
             $note = $_POST['note'];
-
             $modif->updateNote($name_jeu_note, $note);
 
         // Plateforme
-        } elseif ($_POST['action'] === 'updatePlateforme' && isset($_POST['name_jeu_plateforme'])){
+        } elseif ($_POST['action'] === 'updatePlateforme' && isset($_POST['name_jeu_plateforme'])) {
             $name_jeu_plateforme = $_POST['name_jeu_plateforme'];
             $plateforme = $_POST['plateforme'];
-
             $modif->updatePlateforme($name_jeu_plateforme, $plateforme);
 
         // Style
-        } elseif ($_POST['action'] === 'updateStyle' && isset($_POST['name_jeu_style'])){
+        } elseif ($_POST['action'] === 'updateStyle' && isset($_POST['name_jeu_style'])) {
             $name_jeu_style = $_POST['name_jeu_style'];
             $style = $_POST['style'];
-
             $modif->updateStyle($name_jeu_style, $style);
 
         // Supprimer
-        } elseif ($_POST['action'] === 'updateSupprimer' && isset($_POST['id_jeu'])){
+        } elseif ($_POST['action'] === 'updateSupprimer' && isset($_POST['id_jeu'])) {
             $id_jeu = $_POST['id_jeu'];
-
             $modif->updateSupprimer($id_jeu);
 
         // Ajouter un jeu
-        } elseif ($_POST['action'] === 'addGame' && isset($_POST['name_add'])){
+        } elseif ($_POST['action'] === 'addGame' && isset($_POST['name_add'])) {
             $name_add = $_POST['name_add'];
             $note_add = $_POST['note_add'];
             $fini_add = isset($_POST['fini_add']) ? 1 : 0;
@@ -334,7 +324,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $style_add = $_POST['style_add'];
             $description_add = $_POST['description_add'];
 
-            $modif->addGame($name_add, $note_add, $fini_add, $finiN_add, $finP_add, $success_add, $VR_add, $image_add, $plateforme_add, $launcher_add, $style_add, $description_add);
+            $modif->addGame(
+                $name_add,
+                $note_add,
+                $fini_add,
+                $finiN_add,
+                $finP_add,
+                $success_add,
+                $VR_add,
+                $image_add,
+                $plateforme_add,
+                $launcher_add,
+                $style_add,
+                $description_add
+            );
         }
     }
 }
